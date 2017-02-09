@@ -1,0 +1,79 @@
+.card {
+  margin-bottom: 5px;
+  padding: 5px;
+  position: relative;
+}
+
+.card--small {
+  max-width: 304px;
+
+}
+
+.card--wall {
+  cursor: pointer;
+  text-align: center;
+
+  &:hover {
+    background-color: #eee !important;
+    .p{
+      color: black;
+    }
+  }
+}
+
+.card--disabled {
+  background-color: rgba(255, 255, 255, 0.4) !important;
+  cursor: default;
+}
+
+// .card__icon {}
+
+.card__text--button {
+  color: #ff3b80;
+  font-size: 25px;
+}
+
+.card__text--unit {
+  color: #aa3b80;
+  font-size: 20px;
+  margin: 10px;
+}
+
+
+.card--temp {
+  background-color: #f05a24 !important;
+  color: #fff !important;
+  text-align: center;
+}
+
+.card--blue {
+  background-color: #29aae1 !important;
+  color: #fff !important;
+  text-align: center;
+}
+
+.card__text--value {
+  font-size: 60px;
+  font-weight: 300;
+  line-height: 84px;
+  color: black;
+}
+
+.card__text--label {
+  color: black;
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 18px;
+  margin: 10px;
+}
+
+.gauge-container{
+  .gauge{
+    .gauge-arrow{
+      color: #d8000c;
+
+    }
+  }
+
+}
+

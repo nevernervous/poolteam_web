@@ -1,0 +1,19 @@
+.container {
+  margin: 0 auto;
+  max-width: $container-width;
+  //overflow: auto;
+}
+
+.container--small {
+  max-width: 320px;
+}
+
+.container--space {
+  margin: 24px auto;
+}
+
+.container--nav-bar {
+  height: 100%;
+  position: relative;
+  text-align: center;
+}
