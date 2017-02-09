@@ -23,7 +23,8 @@ const ResetPwd = ({ errorText, password, confirmPassword, onSubmit }) => (
     <main className="container container--small">
       <div className="logo-container">
         <img src="images/poolteam_logo.jpg"/>
-        <h4>POOLTEAM | Manage your Pool remotely</h4>
+        <br/><br/>
+        <h4>POOLTEAM | Manage Your Pool Remotely</h4>
       </div>
 
       <h2 style={{ textAlign: 'center' }}>Reset Password</h2>

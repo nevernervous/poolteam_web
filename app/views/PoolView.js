@@ -135,7 +135,7 @@ class PoolView extends React.Component {
   }
 
   handleGotoPH(e){
-    let url = "/pool/" + this.state.pool.serialnumber + "/output/pH";
+    let url = "/pool/" + this.state.pool.serialnumber + "/sensor/pH";
     e.preventDefault();
     if ((new Date).getTime() - this.state.start_time > 1000)
       this.props.router.push(url);

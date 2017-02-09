@@ -22,8 +22,9 @@ const Signup = ({ errorText, email, password, username, confirmPassword, onSubmi
 
     <main className="container container--small">
       <div className="logo-container">
-        <img src="images/Furbish-Logo.png"/>
-        <h4>POOLTEAM | Manage your Pool remotely</h4>
+        <img src="images/poolteam_logo.jpg"/>
+        <br/><br/>
+        <h4>POOLTEAM | Manage Your Pool Remotely</h4>
       </div>
 
       <h2 style={{ textAlign: 'center' }}>Sign Up</h2>
