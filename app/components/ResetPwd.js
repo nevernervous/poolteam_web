@@ -22,7 +22,7 @@ const ResetPwd = ({ errorText, password, confirmPassword, onSubmit }) => (
 
     <main className="container container--small">
       <div className="logo-container">
-        <img src="images/Furbish-Logo.png"/>
+        <img src="images/poolteam_logo.jpg"/>
         <h4>POOLTEAM | Manage your Pool remotely</h4>
       </div>
 

@@ -134,8 +134,8 @@ class PoolView extends React.Component {
     this.setState({b_listview: !this.state.b_listview});
   }
 
-  handleGotoSolenoid(e){
-    let url = "/pool/" + this.state.pool.serialnumber + "/output/Solenoid";
+  handleGotoPH(e){
+    let url = "/pool/" + this.state.pool.serialnumber + "/output/pH";
     e.preventDefault();
     if ((new Date).getTime() - this.state.start_time > 1000)
       this.props.router.push(url);
@@ -150,39 +150,25 @@ class PoolView extends React.Component {
 
     let columns = 4;
     if (window.innerWidth < 500) columns = 1;
-    else if (window.innerWidth < 800) columns = 2;
+    else if (window.innerWidth < 900) columns = 2;
 
-    let solenoid = parseFloat(pool.Solenoid);
-    let light = parseFloat(pool.Light);
-    let fertilizer = parseFloat(pool.Fertilizer);
     let temperature = parseFloat(pool.Temperature);
-    let ph = parseFloat(pool.PH);
-    let ec = parseFloat(pool.EC);
-    let leak = parseFloat(pool.Leak);
-    let pressure = parseFloat(pool.Pressure);
+    let ph = parseFloat(pool.pH);
+    let orp = parseFloat(pool.ORP);
     let flow = parseFloat(pool.Flow);
-    let level = parseFloat(pool.Level);
-    let moisture = parseFloat(pool.Moisture);
 
     return (
       <PoolDetail
         name = {pool.name}
         sn={pool.serialnumber}
-        solenoid={solenoid}
-        light={light}
-        fertilizer={fertilizer}
+        orp={orp}
         temperature={temperature}
         ph={ph}
-        ec={ec}
-        leak={leak}
-        pressure={pressure}
         flow={flow}
-        level={level}
-        moisture={moisture}
         columns = {columns}
         b_listview={this.state.b_listview}
         onChangeToggle={(e) => this.handleToggle(e)}
-        goto_solenoid={(e) => this.handleGotoSolenoid(e)}
+        goto_ph={(e) => this.handleGotoPH(e)}
       />
     );
   }

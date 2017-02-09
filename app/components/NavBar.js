@@ -68,7 +68,7 @@ export default class NavBar extends React.Component {
             />
           }
           <div style={{marginTop: 10}}>
-            <img className={window.innerWidth > 500 ? "logo" : "logo-small"} src="/images/Furbish-Logo.png" />
+            <img className={window.innerWidth > 500 ? "logo" : "logo-small"} src="/images/poolteam_logo.jpg" />
           </div>
 
           <List style={{ position: 'absolute', top: 0, right: 0}}>
