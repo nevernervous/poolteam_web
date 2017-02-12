@@ -1,7 +1,7 @@
 import FlatButton from 'material-ui/FlatButton';
 import React from 'react';
 import { Link } from 'react-router';
-import {} from 'material-ui/styles/colors';
+import {blue900} from 'material-ui/styles/colors';
 
 const SignupConfirmationView = () => (
   <div className="auth-page">

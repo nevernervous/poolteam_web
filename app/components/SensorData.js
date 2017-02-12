@@ -1,6 +1,6 @@
 import React from 'react';
 import api from '../api';
-import {grey500 , cyan400, pink50 } from 'material-ui/styles/colors';
+import {grey500 , cyan400, pink50, blue900} from 'material-ui/styles/colors';
 import LoadingIndicator from '../components/LoadingIndicator';
 import MessageBox from '../components/MessageBox';
 import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn} from 'material-ui/Table';
@@ -122,10 +122,12 @@ export default class SensorData extends React.Component {
           <table>
             <tr>
               <td>
-                <FontIcon className="material-icons" style={{margin: 5}} color={cyan500}>date_range</FontIcon>
+                <FontIcon className="material-icons" style={{margin: 5}} color={blue900}>date_range</FontIcon>
               </td>
               <td>
                 <DatePicker floatingLabelText="Select date to display chart"
+                            inputStyle={{color: blue900}}
+                            style={{color: blue900}}
                             hintText="Today" defaultDate={this.state.date}
                             onChange={(event, date) => this.handleChangeDate(event, date)}/>
               </td>
