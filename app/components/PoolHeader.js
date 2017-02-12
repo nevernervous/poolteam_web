@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, withRouter} from 'react-router';
-import {cyan400, white} from 'material-ui/styles/colors';
+import {cyan400, white, blue900} from 'material-ui/styles/colors';
 import RaisedButton from 'material-ui/RaisedButton';
 import SettingsIcon from 'material-ui/svg-icons/action/settings';
 import AppBar from 'material-ui/AppBar';
@@ -17,7 +17,7 @@ const styles = {
     fontSize: 22,
   },
   appbar: {
-    background: cyan400,
+    background: blue900,
   },
 };
 

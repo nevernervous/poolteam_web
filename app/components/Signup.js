@@ -1,7 +1,7 @@
 import AppBar from 'material-ui/AppBar';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
-import { white } from 'material-ui/styles/colors';
+import { white, yellow600, blue900 } from 'material-ui/styles/colors';
 import React from 'react';
 import { Link } from 'react-router';
 import MessageBox from './MessageBox';
@@ -12,6 +12,8 @@ const Signup = ({ errorText, email, password, username, confirmPassword, onSubmi
       iconElementRight={
         <RaisedButton
           containerElement={<Link to="/login" />}
+          buttonStyle={{backgroundColor: yellow600}}
+          labelStyle={{color: blue900}}
           label="Login"
           secondary
         />
@@ -36,6 +38,8 @@ const Signup = ({ errorText, email, password, username, confirmPassword, onSubmi
               hintText="User Name"
               floatingLabelText="User Name"
               fullWidth
+              underlineFocusStyle={{color: blue900}}
+              floatingLabelFocusStyle={{color: blue900}}
               required
               type="text"
               {...username}
@@ -45,6 +49,8 @@ const Signup = ({ errorText, email, password, username, confirmPassword, onSubmi
           floatingLabelText="Email address"
           fullWidth
           required
+          underlineFocusStyle={{color: blue900}}
+          floatingLabelFocusStyle={{color: blue900}}
           type="email"
           {...email}
         />
@@ -53,6 +59,8 @@ const Signup = ({ errorText, email, password, username, confirmPassword, onSubmi
           floatingLabelText="Password"
           fullWidth
           required
+          underlineFocusStyle={{color: blue900}}
+          floatingLabelFocusStyle={{color: blue900}}
           type="password"
           {...password}
         />
@@ -61,6 +69,8 @@ const Signup = ({ errorText, email, password, username, confirmPassword, onSubmi
           floatingLabelText="Confirm Password"
           fullWidth
           required
+          underlineFocusStyle={{color: blue900}}
+          floatingLabelFocusStyle={{color: blue900}}
           type="password"
           {...confirmPassword}
         />
@@ -68,6 +78,8 @@ const Signup = ({ errorText, email, password, username, confirmPassword, onSubmi
           fullWidth
           label="Sign up"
           primary
+          buttonStyle={{backgroundColor: yellow600}}
+          labelStyle={{color: blue900}}
           style={{ marginTop: 16, width: '100%' }}
           type="submit"
         />

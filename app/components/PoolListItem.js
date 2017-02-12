@@ -30,7 +30,7 @@ const PoolListItem = ({
   <ListItem
     onTouchTap={onTouchThis}
     leftAvatar={
-      <img src="images/pool_icon.png"/>
+      <img src="images/poolICON.png" width={40} height={40}/>
     }
     primaryText={name || '[unnamed]'}
     secondaryText={serialNumber}

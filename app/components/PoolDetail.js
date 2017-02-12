@@ -8,7 +8,7 @@ import React from 'react';
 import SettingsIcon from 'material-ui/svg-icons/action/settings';
 import ChevronRightIcon from 'material-ui/svg-icons/navigation/chevron-right';
 import Toggle from 'material-ui/Toggle';
-import { white, cyan400, pink50 } from 'material-ui/styles/colors';
+import { white, cyan400, pink50, blue900 } from 'material-ui/styles/colors';
 import {Grid, Span} from 'react-responsive-grid';
 import { Link, browserHistory } from 'react-router';
 import AppBar from 'material-ui/AppBar';
@@ -23,7 +23,7 @@ const styles = {
     cursor: 'pointer',
   },
   appbar: {
-    background: cyan400,
+    background: blue900,
   },
 };
 
@@ -48,7 +48,7 @@ const PoolDetail = ({
   <div>
     <AppBar style={styles.appbar}
       title={<h2 style={{marginTop:15}}><span style={styles.title}>{name}</span></h2>}
-      iconElementLeft={<div style={{marginLeft: 20, marginTop: 5}}><img src="images/pool_icon.png"/></div>}
+      iconElementLeft={<div style={{marginLeft: 20, marginTop: 5}}><img src="images/poolICON.png" width={40} height={40}/></div>}
     />
     {
       (columns == 1) &&
@@ -57,7 +57,6 @@ const PoolDetail = ({
                   label={b_listview ? "List View" : "Icon View"}/>
         </div>
     }
-    {/* Desktop Page*/}
     {
       (columns != 1  || !b_listview) ?
         <div>

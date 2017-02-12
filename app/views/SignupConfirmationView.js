@@ -1,6 +1,7 @@
 import FlatButton from 'material-ui/FlatButton';
 import React from 'react';
 import { Link } from 'react-router';
+import {} from 'material-ui/styles/colors';
 
 const SignupConfirmationView = () => (
   <div className="auth-page">
@@ -14,6 +15,7 @@ const SignupConfirmationView = () => (
       </p>
       <FlatButton
         containerElement={<Link to="login" />}
+        labelStyle={{color: blue900}}
         label="click here to login"
         secondary
       />

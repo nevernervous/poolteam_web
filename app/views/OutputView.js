@@ -4,7 +4,7 @@ import MessageBox from '../components/MessageBox';
 import LoadingIndicator from '../components/LoadingIndicator';
 import NavBar from '../components/NavBar';
 import TextField from 'material-ui/TextField';
-import {lightBlue600, cyan400, orange800 } from 'material-ui/styles/colors';
+import {lightBlue600, cyan400, orange800, blue900, yellow600 } from 'material-ui/styles/colors';
 import store from '../store';
 import FontIcon from 'material-ui/FontIcon';
 import Subheader from 'material-ui/Subheader';
@@ -446,6 +446,8 @@ export default class OutputView extends React.Component {
                   <TextField
                     name="start_time"
                     hintText="07:00"
+                    underlineFocusStyle={{color: blue900}}
+                    floatingLabelFocusStyle={{color: blue900}}
                     floatingLabelText="START TIME"
                     value={this.state.start_time}
                     disabled={this.state.busy}
@@ -467,6 +469,8 @@ export default class OutputView extends React.Component {
                     hintText="23:00"
                     style = {{width: 100}}
                     floatingLabelText="STOP TIME"
+                    underlineFocusStyle={{color: blue900}}
+                    floatingLabelFocusStyle={{color: blue900}}
                     value={this.state.stop_time}
                     disabled={this.state.busy}
                     onChange={this.onChangeTextInput.bind(this)}
@@ -477,6 +481,8 @@ export default class OutputView extends React.Component {
                     name="cycle"
                     hintText="60"
                     style = {{width: 150}}
+                    underlineFocusStyle={{color: blue900}}
+                    floatingLabelFocusStyle={{color: blue900}}
                     floatingLabelText="Run Cycle(seconds)"
                     value={this.state.cycle}
                     disabled={this.state.busy}
@@ -490,6 +496,8 @@ export default class OutputView extends React.Component {
                     style = {{width: 150}}
                     floatingLabelText="Run Time(seconds)"
                     value={this.state.delay}
+                    underlineFocusStyle={{color: blue900}}
+                    floatingLabelFocusStyle={{color: blue900}}
                     disabled={this.state.busy}
                     onChange={this.onChangeTextInput.bind(this)}
                   />
@@ -500,9 +508,11 @@ export default class OutputView extends React.Component {
                 <RaisedButton
                   label="APPLY"
                   primary={true}
+                  buttonStyle={{backgroundColor: yellow600}}
+                  labelStyle={{color: blue900}}
                   disabled={this.state.busy}
                   onTouchTap={this.handleApply.bind(this)}>
-                  {this.state.busy && <LinearProgress />}
+                  {this.state.busy && <LinearProgress color={blue900}/>}
                   </RaisedButton>
               </div>
               <br/>

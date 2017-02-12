@@ -6,9 +6,9 @@ import LoadingIndicator from '../components/LoadingIndicator';
 import NavBar from '../components/NavBar';
 import Divider from 'material-ui/Divider';
 import AppBar from 'material-ui/AppBar';
-import {cyan50, cyan400, pink200, grey100} from 'material-ui/styles/colors';
+import {blue900, cyan50, cyan400, pink200, grey100} from 'material-ui/styles/colors';
 import FontIcon from 'material-ui/FontIcon';
-import {red500, lime500, pink400, grey400} from 'material-ui/styles/colors';
+import {yellow600, red500, lime500, pink400, grey400} from 'material-ui/styles/colors';
 import FlatButton from 'material-ui/FlatButton';
 import IconButton from 'material-ui/IconButton';
 import {List, ListItem} from 'material-ui/List';
@@ -315,9 +315,9 @@ export default class UserMangeView extends React.Component {
     return (
       <div>
         <NavBar showHomeButton />
-        <AppBar style={{background: cyan400}}
-                iconElementLeft={<FontIcon className="material-icons" color={cyan50} style={{margin:10}}>people</FontIcon>}
-                title="User Management"
+        <AppBar style={{background: blue900}}
+                iconElementLeft={<FontIcon className="material-icons" color={yellow600} style={{margin:10}}>people</FontIcon>}
+                title={<span style={{color: yellow600}}>User Management</span>}
         />
         {this.renderMainContent()}
 
@@ -333,6 +333,8 @@ export default class UserMangeView extends React.Component {
             hintText="Type 'DISMISS' to confirm"
             floatingLabelText="Type 'DISMISS' to confirm"
             value={this.state.dlg_text}
+            underlineFocusStyle={{color: blue900}}
+            floatingLabelFocusStyle={{color: blue900}}
             onChange={this.onChangeTextDialog.bind(this)}
             disabled={this.state.isWorking}
           />
@@ -350,6 +352,8 @@ export default class UserMangeView extends React.Component {
             hintText="Input Device Serial Number"
             floatingLabelText="Input Device Serial Number"
             value={this.state.dlg_text}
+            underlineFocusStyle={{color: blue900}}
+            floatingLabelFocusStyle={{color: blue900}}
             onChange={this.onChangeTextDialog.bind(this)}
             disabled={this.state.isWorking}
           />
@@ -366,6 +370,8 @@ export default class UserMangeView extends React.Component {
             hintText="DELETE"
             floatingLabelText="Type DELETE to confirm"
             value={this.state.dlg_text}
+            underlineFocusStyle={{color: blue900}}
+            floatingLabelFocusStyle={{color: blue900}}
             onChange={this.onChangeTextDialog.bind(this)}
             disabled={this.state.isWorking}
           />

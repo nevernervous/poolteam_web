@@ -1,7 +1,7 @@
 import AppBar from 'material-ui/AppBar';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
-import { white } from 'material-ui/styles/colors';
+import { white, yellow600, blue900 } from 'material-ui/styles/colors';
 import React from 'react';
 import { Link } from 'react-router';
 import MessageBox from './MessageBox';
@@ -35,6 +35,8 @@ const ResetPwd = ({ errorText, password, confirmPassword, onSubmit }) => (
           hintText="Password"
           floatingLabelText="Password"
           fullWidth
+          underlineFocusStyle={{color: blue900}}
+          floatingLabelFocusStyle={{color: blue900}}
           required
           type="password"
           {...password}
@@ -44,6 +46,8 @@ const ResetPwd = ({ errorText, password, confirmPassword, onSubmit }) => (
           floatingLabelText="Confirm Password"
           fullWidth
           required
+          underlineFocusStyle={{color: blue900}}
+          floatingLabelFocusStyle={{color: blue900}}
           type="password"
           {...confirmPassword}
         />
@@ -51,6 +55,8 @@ const ResetPwd = ({ errorText, password, confirmPassword, onSubmit }) => (
           fullWidth
           label="Reset"
           primary
+          buttonStyle={{backgroundColor: yellow600}}
+          labelStyle={{color: blue900}}
           style={{ marginTop: 16, width: '100%' }}
           type="submit"
         />

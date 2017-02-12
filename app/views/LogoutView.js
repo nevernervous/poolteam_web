@@ -1,7 +1,7 @@
 import AppBar from 'material-ui/AppBar';
 import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
-import { white } from 'material-ui/styles/colors';
+import { white, blue900, yellow600 } from 'material-ui/styles/colors';
 import React from 'react';
 import { Link } from 'react-router';
 
@@ -16,6 +16,8 @@ export default class LogoutView extends React.Component {
         <AppBar
           iconElementRight={
             <RaisedButton
+              buttonStyle={{backgroundColor: yellow600}}
+              labelStyle={{color: blue900}}
               containerElement={<Link to="/login" />}
               label="login"
               secondary
@@ -37,6 +39,7 @@ export default class LogoutView extends React.Component {
           <FlatButton
             containerElement={<Link to="/login" />}
             label="Login again"
+            labelStyle={{color: blue900}}
             secondary
           />
         </main>

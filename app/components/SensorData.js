@@ -5,7 +5,9 @@ import LoadingIndicator from '../components/LoadingIndicator';
 import MessageBox from '../components/MessageBox';
 import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn} from 'material-ui/Table';
 import {Chart} from 'react-google-charts';
-
+import DatePicker from 'material-ui/DatePicker';
+import FontIcon from 'material-ui/FontIcon';
+import {cyan500} from 'material-ui/styles/colors';
 
 const styles = {
   title: {
@@ -34,11 +36,16 @@ export default class SensorData extends React.Component {
     super(props);
     let errorText = null;
     let values = null;
-
+    let start_time = null;
+    let stop_time = null;
+    const date = new Date();
+    date.setHours(0, 0, 0, 0);
     this.state = {
       errorText,
       values,
-      itemCount : 20
+      itemCount : 30,
+      date: date,
+
     };
   }
 
@@ -53,7 +60,8 @@ export default class SensorData extends React.Component {
   }
 
   pollSensorData() {
-    api.getPoolData(this.props.sn, this.props.alias, this.state.itemCount, 'sensor')
+    api.getPoolData(this.props.sn, this.props.alias,
+      this.state.itemCount, 'sensor', this.state.start_time, this.state.end_time)
       .then(response => this.handlePoolApiResponse(response))
       .catch(err => {
         clearTimeout(this.state.timeoutId);
@@ -86,6 +94,9 @@ export default class SensorData extends React.Component {
     }
   }
 
+  handleChangeDate(event, date){
+    console.log(date);
+  }
   renderErrorMessage() {
     return (
       <div className="container container--space">
@@ -107,6 +118,20 @@ export default class SensorData extends React.Component {
 
     return (
       <div>
+        <div style={{textAlign: 'right', marginLeft: 100}}>
+          <table>
+            <tr>
+              <td>
+                <FontIcon className="material-icons" style={{margin: 5}} color={cyan500}>date_range</FontIcon>
+              </td>
+              <td>
+                <DatePicker floatingLabelText="Select date to display chart"
+                            hintText="Today" defaultDate={this.state.date}
+                            onChange={(event, date) => this.handleChangeDate(event, date)}/>
+              </td>
+            </tr>
+          </table>
+        </div>
         <div className={"my-pretty-chart-container"}>
           <Chart
             chartType="LineChart"

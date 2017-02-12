@@ -8,14 +8,13 @@ import LoadingIndicator from '../components/LoadingIndicator';
 import NavBar from '../components/NavBar';
 import Divider from 'material-ui/Divider';
 import AppBar from 'material-ui/AppBar';
-import {cyan50, cyan400, grey600} from 'material-ui/styles/colors';
+import {cyan50, cyan400, grey600, blue900} from 'material-ui/styles/colors';
 import FontIcon from 'material-ui/FontIcon';
-import {red500, indigo600, blue500} from 'material-ui/styles/colors';
+import {red500, indigo600, blue500, yellow600} from 'material-ui/styles/colors';
 import FlatButton from 'material-ui/FlatButton';
 import TextField from 'material-ui/TextField';
 import Dialog from 'material-ui/Dialog';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
-import ContentAdd from 'material-ui/svg-icons/content/add';
 import base32 from 'base32';
 
 
@@ -273,6 +272,7 @@ export default class SettingsView extends React.Component {
       <FlatButton
         label="CANCEL"
         primary={true}
+        labelStyle={{color: blue900}}
         keyboardFocused={true}
         disabled={this.state.isWorking}
         onTouchTap={this.handleCloseDialog.bind(this)}
@@ -280,6 +280,7 @@ export default class SettingsView extends React.Component {
       <FlatButton
         label="DELETE"
         primary={true}
+        labelStyle={{color: blue900}}
         disabled={!this.state.btn_dialog || this.state.isWorking}
         onTouchTap={this.performDeleteAlert.bind(this)}
       />,
@@ -289,6 +290,7 @@ export default class SettingsView extends React.Component {
       <FlatButton
         label="CANCEL"
         primary={true}
+        labelStyle={{color: blue900}}
         keyboardFocused={true}
         disabled={this.state.isWorking}
         onTouchTap={this.handleCloseDialog.bind(this)}
@@ -296,6 +298,7 @@ export default class SettingsView extends React.Component {
       <FlatButton
         label={(this.state.alert_type != 'sender_phone') ? "ADD" : "APPLY"}
         primary={true}
+        labelStyle={{color: blue900}}
         disabled={!this.state.btn_dialog || this.state.isWorking}
         onTouchTap={this.performAddAlert.bind(this)}
       />,
@@ -311,9 +314,11 @@ export default class SettingsView extends React.Component {
           {alert_emails.length
             ?
             alert_emails.map((alert, i) => [
-              <TextField value={alert}/>,
+              <TextField value={alert} underlineFocusStyle={{color: blue900}}
+                         floatingLabelFocusStyle={{color: blue900}}/>,
               <FlatButton
                 style={{width:30}}
+                labelStyle={{color: blue900}}
                 onClick={() => this.handleDeleteAlert('email', i)}
                 primary={true}
                 icon={<FontIcon name={i} className="material-icons" style={iconStyles} color={red500}>delete_forever</FontIcon>}
@@ -326,8 +331,9 @@ export default class SettingsView extends React.Component {
               <br/>
             </div>
           }
-          <FloatingActionButton mini={true} onTouchTap={() => this.openAddAlertModal('email')}>
-            <ContentAdd />
+          <FloatingActionButton mini={true} backgroundColor={blue900}
+                                onTouchTap={() => this.openAddAlertModal('email')}>
+            <FontIcon className="material-icons" color={yellow600}>add</FontIcon>
           </FloatingActionButton>
 
           <br/><br/><br/><br/>
@@ -337,7 +343,8 @@ export default class SettingsView extends React.Component {
               <h4>Visit <a href="https://www.twilio.com"> twilio</a> and get sender's phone number</h4>
               <Divider />
               <div>
-                <TextField value={this.state.sender_phone}/>
+                <TextField value={this.state.sender_phone} underlineFocusStyle={{color: blue900}}
+                           floatingLabelFocusStyle={{color: blue900}}/>
                 <IconButton iconClassName="material-icons"
                             onClick={() => this.openAddAlertModal('sender_phone')}
                             tooltip="Edit">
@@ -350,17 +357,20 @@ export default class SettingsView extends React.Component {
           <h3> SMS Phone Numbers <FontIcon className="material-icons" style={{margin: 5}} color={grey600}>sms</FontIcon> </h3>
           <Divider/>
           {alert_sms.map((sms, i) => [
-            <TextField value={'+' + sms}/>,
+            <TextField value={'+' + sms} underlineFocusStyle={{color: blue900}}
+                       floatingLabelFocusStyle={{color: blue900}}/>,
             <FlatButton
               style={{width:30}}
+              labelStyle={{color: blue900}}
               onClick={() => this.handleDeleteAlert('sms', i)}
               primary={true}
               icon={<FontIcon name={i} className="material-icons" style={iconStyles} color={red500}>delete_forever</FontIcon>}
             />,
             <br/>
           ])}
-          <FloatingActionButton mini={true} onTouchTap={() => this.openAddAlertModal('sms')}>
-            <ContentAdd />
+          <FloatingActionButton mini={true} backgroundColor={blue900}
+                                onTouchTap={() => this.openAddAlertModal('sms')}>
+            <FontIcon className="material-icons" color={yellow600}>add</FontIcon>
           </FloatingActionButton>
         </div>
 
@@ -375,6 +385,8 @@ export default class SettingsView extends React.Component {
             hintText="Type 'DELETE' to confirm"
             floatingLabelText="Type 'DELETE' to confirm"
             value={this.state.txt_dialog}
+            underlineFocusStyle={{color: blue900}}
+            floatingLabelFocusStyle={{color: blue900}}
             onChange={this.onChangeTextDeleteDialog.bind(this)}
             disabled={this.state.isWorking}
           />
@@ -391,6 +403,8 @@ export default class SettingsView extends React.Component {
             hintText={`Input alert ${this.state.alert_type}`}
             floatingLabelText="Input here"
             value={this.state.txt_dialog}
+            underlineFocusStyle={{color: blue900}}
+            floatingLabelFocusStyle={{color: blue900}}
             onChange={this.onChangeTextAddDialog.bind(this)}
             disabled={this.state.isWorking}
           />
@@ -404,9 +418,9 @@ export default class SettingsView extends React.Component {
     return (
       <div>
         <NavBar showHomeButton />
-        <AppBar style={{background: cyan400}}
-                iconElementLeft={<FontIcon className="material-icons" color={cyan50} style={{margin:10}}>settings</FontIcon>}
-                title="Settings"
+        <AppBar style={{background: blue900}}
+                iconElementLeft={<FontIcon className="material-icons" color={yellow600} style={{margin:10}}>settings</FontIcon>}
+                title={<span style={{color: yellow600}}>Settings</span>}
         />
         {this.renderMainContent()}
       </div>

@@ -2,7 +2,7 @@ import store from '../store';
 import AppBar from 'material-ui/AppBar';
 import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
-import { white, cyan400 } from 'material-ui/styles/colors';
+import { white, cyan400, blue900, yellow600 } from 'material-ui/styles/colors';
 import HomeIcon from 'material-ui/svg-icons/action/home';
 import ChevronLeftIcon from 'material-ui/svg-icons/navigation/chevron-left';
 import React from 'react';
@@ -59,10 +59,12 @@ export default class NavBar extends React.Component {
               }
               icon={
                 <div className="navbar__button-icon">
-                  <ChevronLeftIcon color={white} />
-                  <HomeIcon color={white} />
+                  <ChevronLeftIcon color={yellow600} />
+                  <HomeIcon color={yellow600} />
                 </div>
               }
+              buttonStyle={{backgroundColor: blue900}}
+              labelStyle={{color: blue900}}
               primary={true}
               style={{ position: 'absolute', top: 14, left: 0 }}
             />
@@ -90,20 +92,20 @@ export default class NavBar extends React.Component {
               {store.role === 'admin' ?
                 <Link to="/user_manage">
                   <ListItem primaryText="User Management" onTouchTap={this.handleFeedback.bind(this)}
-                          leftIcon={<FontIcon className="material-icons" color={cyan400}>people</FontIcon>}/>
+                          leftIcon={<FontIcon className="material-icons" color={blue900}>people</FontIcon>}/>
                 </Link>
                 :
                 <ListItem primaryText="Help &amp; feedback" onTouchTap={this.handleFeedback.bind(this)}
-                          leftIcon={<FontIcon className="material-icons" color={cyan400}>feedback</FontIcon>}/>
+                          leftIcon={<FontIcon className="material-icons" color={blue900}>feedback</FontIcon>}/>
               }
               <Link to="/pool/settings">
                 <ListItem primaryText="Settings"
                           secondaryText={store.email}
-                          leftIcon={<FontIcon className="material-icons" color={cyan400}>settings</FontIcon>}/>
+                          leftIcon={<FontIcon className="material-icons" color={blue900}>settings</FontIcon>}/>
               </Link>
               <Link to="/logout">
                 <ListItem primaryText="Logout"
-                        leftIcon={<FontIcon className="material-icons" color={cyan400}>exit_to_app</FontIcon>}/>
+                        leftIcon={<FontIcon className="material-icons" color={blue900}>exit_to_app</FontIcon>}/>
               </Link>
             </List>
           </Popover>

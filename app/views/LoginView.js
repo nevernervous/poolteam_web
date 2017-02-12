@@ -6,6 +6,7 @@ import store from '../store';
 import FlatButton from 'material-ui/FlatButton';
 import TextField from 'material-ui/TextField';
 import Dialog from 'material-ui/Dialog';
+import {blue900} from 'material-ui/styles/colors';
 
 function validateEmail(email) {
     var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -83,6 +84,7 @@ export default class LoginView extends React.Component {
       <FlatButton
         label="CANCEL"
         primary={true}
+        labelStyle={{color: blue900}}
         keyboardFocused={true}
         disabled={isAuthenticating}
         onTouchTap={() => this.handleCloseDialog()}
@@ -90,6 +92,7 @@ export default class LoginView extends React.Component {
       <FlatButton
         label="SEND EMAIL"
         primary={true}
+        labelStyle={{color: blue900}}
         disabled={!this.state.btn_dialog || isAuthenticating}
         onTouchTap={() => this.performSendForgotEmail()}
       />,
@@ -116,6 +119,8 @@ export default class LoginView extends React.Component {
             hintText="Password Recovery Email"
             floatingLabelText="Input here"
             value={this.state.txt_dialog}
+            underlineFocusStyle={{color: blue900}}
+            floatingLabelFocusStyle={{color: blue900}}
             onChange={this.onChangeTextDialog.bind(this)}
             disabled={isAuthenticating}
           />

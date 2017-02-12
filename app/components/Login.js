@@ -3,7 +3,7 @@ import FlatButton from 'material-ui/FlatButton';
 import LinearProgress from 'material-ui/LinearProgress';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
-import { white } from 'material-ui/styles/colors';
+import { white, yellow600, blue900 } from 'material-ui/styles/colors';
 import React from 'react';
 import { Link } from 'react-router';
 import MessageBox from './MessageBox';
@@ -15,6 +15,8 @@ const Login = ({ errorText, isAuthenticating, infoText, onSubmit, handleOpenDial
         <RaisedButton
           containerElement={<Link to="/signup" />}
           label="Sign up"
+          buttonStyle={{backgroundColor: yellow600}}
+          labelStyle={{color: blue900}}
           secondary
         />
       }
@@ -42,6 +44,8 @@ const Login = ({ errorText, isAuthenticating, infoText, onSubmit, handleOpenDial
           name="email"
           required
           type="email"
+          underlineFocusStyle={{color: blue900}}
+          floatingLabelFocusStyle={{color: blue900}}
         />
         <TextField
           hintText="Password"
@@ -50,20 +54,25 @@ const Login = ({ errorText, isAuthenticating, infoText, onSubmit, handleOpenDial
           name="password"
           required
           type="password"
+          underlineFocusStyle={{color: blue900}}
+          floatingLabelFocusStyle={{color: blue900}}
         />
         <RaisedButton
           disabled={isAuthenticating}
           fullWidth
+          buttonStyle={{backgroundColor: yellow600}}
+          labelStyle={{color: blue900}}
           label="Login"
           primary
           style={{ marginTop: 16, width: '100%' }}
           type="submit"
         >
-          {isAuthenticating && <LinearProgress />}
+          {isAuthenticating && <LinearProgress color={blue900} />}
         </RaisedButton>
       </form>
 
       <FlatButton label="Forgot password?" primary
+                  labelStyle={{color: blue900}}
                   style={{ width: '100%' }}
                   onTouchTap={handleOpenDialog}
                   disabled={isAuthenticating}

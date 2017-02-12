@@ -1,6 +1,6 @@
 import React from 'react';
 import api from '../api';
-import {grey500 , cyan400, pink50 } from 'material-ui/styles/colors';
+import {grey500 , cyan400, pink50, yellow600, blue900 } from 'material-ui/styles/colors';
 import MessageBox from '../components/MessageBox';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
@@ -206,6 +206,8 @@ export default class SensorRule extends React.Component {
                       hintText="Input value here"
                       floatingLabelText="High Set Pt"
                       floatingLabelFixed={true}
+                      underlineFocusStyle={{color: blue900}}
+                      floatingLabelFocusStyle={{color: blue900}}
                       onChange={this.onChangeHighSP.bind(this)}
                       disabled={this.state.busy}
                       value={this.state.high_setpoint}/>
@@ -214,6 +216,8 @@ export default class SensorRule extends React.Component {
                     hintText="Input value here"
                     floatingLabelText="Low Set Pt"
                     floatingLabelFixed={true}
+                    underlineFocusStyle={{color: blue900}}
+                    floatingLabelFocusStyle={{color: blue900}}
                     onChange={this.onChangeLowSP.bind(this)}
                     disabled={this.state.busy}
                     value={this.state.low_setpoint}/>
@@ -226,6 +230,8 @@ export default class SensorRule extends React.Component {
                     floatingLabelText="High SetPoint Alert"
                     disabled={this.state.busy}
                     hintText="Input value here"
+                    underlineFocusStyle={{color: blue900}}
+                    floatingLabelFocusStyle={{color: blue900}}
                     onChange={this.onChangeAlertHigh.bind(this)}
                     value={this.state.alert_high}
                     floatingLabelFixed={true}/>
@@ -233,6 +239,8 @@ export default class SensorRule extends React.Component {
                     floatingLabelText="Low SetPoint Alert"
                     disabled={this.state.busy}
                     hintText="Input value here"
+                    underlineFocusStyle={{color: blue900}}
+                    floatingLabelFocusStyle={{color: blue900}}
                     onChange={this.onChangeAlertLow.bind(this)}
                     value={this.state.alert_low}
                     floatingLabelFixed={true}/>
@@ -242,10 +250,12 @@ export default class SensorRule extends React.Component {
           <RaisedButton
             label="Apply"
             primary={true}
+            buttonStyle={{backgroundColor: yellow600}}
+            labelStyle={{color: blue900}}
             style={{margin: 12}}
             disabled={this.state.busy}
             onClick={this.updateSettings.bind(this)}>
-            {this.state.busy && <LinearProgress />}
+            {this.state.busy && <LinearProgress color={blue900}/>}
             </RaisedButton>
         </div>
         <Snackbar

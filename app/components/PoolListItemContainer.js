@@ -5,6 +5,7 @@ import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import TextField from 'material-ui/TextField';
 import api from '../api';
+import {blue900} from 'material-ui/styles/colors';
 
 
 class PoolListItemContainer extends React.Component {
@@ -107,12 +108,14 @@ class PoolListItemContainer extends React.Component {
         label="CANCEL"
         primary={true}
         keyboardFocused={true}
+        labelStyle={{color: blue900}}
         disabled={this.state.isWorking}
         onTouchTap={this.handleCloseDialog.bind(this)}
       />,
       <FlatButton
         label={this.state.action_type === 'delete' ? "DELETE" : "APPLY"}
         primary={true}
+        labelStyle={{color: blue900}}
         disabled={!this.state.btn_dialog || this.state.isWorking}
         onTouchTap={this.performAction.bind(this)}
       />,
@@ -143,6 +146,8 @@ class PoolListItemContainer extends React.Component {
             hintText={this.state.action_type === 'delete' ? "Type 'DELETE' to confirm" : "Device name"}
             floatingLabelText={this.state.action_type === 'delete' ? "Type 'DELETE' to confirm" : "Device name"}
             value={this.state.txt_dialog}
+            underlineFocusStyle={{color: blue900}}
+            floatingLabelFocusStyle={{color: blue900}}
             onChange={this.onChangeTextDialog.bind(this)}
             disabled={this.state.isWorking}
           />

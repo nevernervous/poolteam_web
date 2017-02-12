@@ -428,7 +428,11 @@ local user = currentUser(request)
 -- Only administrators can manage sender's phone number
 if user ~= nil and getUserRoleByEmail(user.email) == 'admin' then
   local result = Keystore.get(({ key = "sms_sender_phone" })).value
-  response.message = string.sub(result, 2, -2)
+  if result ~= nil then
+    response.message = string.sub(result, 2, -2)
+  else
+    response.message = 'Not set'
+  end
 else
   http_error(403, response)
 end
@@ -664,7 +668,7 @@ if user ~= nil then
   kv_write(sn, data)
 
 -- Update dataport
---  write(sn, alias, value)
+  write(sn, alias, value)
 
 -- Update TSDB
   local metrics = {

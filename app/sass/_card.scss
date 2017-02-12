@@ -14,7 +14,7 @@
   text-align: center;
 
   &:hover {
-    background-color: #eee !important;
+    background-color: #2aeeda !important;
     .p{
       color: black;
     }
@@ -29,12 +29,12 @@
 // .card__icon {}
 
 .card__text--button {
-  color: #ff3b80;
+  color: #ffd749 !important;
   font-size: 25px;
 }
 
 .card__text--unit {
-  color: #aa3b80;
+  color: #ffd749;
   font-size: 20px;
   margin: 10px;
 }
@@ -47,8 +47,8 @@
 }
 
 .card--blue {
-  background-color: #29aae1 !important;
-  color: #fff !important;
+  background-color: #2058e1 !important;
+  color: #ffff54 !important;
   text-align: center;
 }
 
@@ -60,7 +60,7 @@
 }
 
 .card__text--label {
-  color: black;
+  color: #fff86b;
   font-size: 20px;
   font-weight: 300;
   line-height: 18px;
