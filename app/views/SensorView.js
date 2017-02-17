@@ -103,18 +103,14 @@ class SensorView extends React.Component {
   }
 
   pollSensorData() {
-    const cur_date = new Date();
-    let offset = parseInt((this.state.date - cur_date) / 1000 / 3600 / 24);
-    let str_offset = 'error';
-    let str_offset_1 = 'error';
-    if (offset < -1){
-      str_offset = offset.toString() + 'd';
-      offset += 1;
-      str_offset_1 = offset.toString() + 'd';
-    }
-    else if (offset == -1)
-      str_offset = '-1d';
-    api.getPoolData(this.state.pool.serialnumber, this.state.alias, str_offset, str_offset_1)
+    let start_time = this.state.date.toISOString();
+    let tmp = new Date();
+    tmp.setDate(this.state.date.getDate() + 1);
+    tmp.setHours(0, 0, 0, 0);
+    let end_time = tmp.toISOString();
+    // console.log('Start time', start_time);
+    // console.log('End time', end_time);
+    api.getPoolData(this.state.pool.serialnumber, this.state.alias, start_time, end_time)
       .then(response => this.handlePoolApiResponse(response))
       .catch(err => {
         clearTimeout(this.state.timeoutId);

@@ -568,8 +568,8 @@ if user ~= nil then
     metrics = metrics,
     tags = tags,
     limit = limit,
-    relative_start = start_time,
-    relative_end = end_time,
+    start_time = start_time,
+    end_time = end_time,
     fill = "null",
     epoch = "s"
   })
