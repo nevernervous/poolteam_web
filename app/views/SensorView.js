@@ -148,7 +148,7 @@ class SensorView extends React.Component {
   }
 
   handleChangeDate(event, date){
-    this.setState({date: date});
+    this.setState({date: date, values: null});
     this.pollSensorData();
   }
   renderErrorMessage() {
@@ -161,13 +161,16 @@ class SensorView extends React.Component {
 
   renderMainContent() {
     if (this.state.errorText) return this.renderErrorMessage();
-    if (this.state.values == null) return <LoadingIndicator />;
-    // Convert Epoch seconds value to date value
-    // Sample value: [1480572566, "5.75", "", ""]   >>>>  [timestamp, value, user_mail, action]
-    let chart_data = this.state.values.map((val) => {return [epoch_to_date(val[0], true), parseFloat(val[1])]});
-    chart_data = [['Timestamp', this.state.alias], ].concat(chart_data);
-    let table_data = this.state.values.map((val) => {return [epoch_to_date(val[0]).toString(), val[1]]});
-    table_data = table_data.filter(dd => dd[1] != null);
+    let chart_data = null;
+    let table_data = null;
+    if (this.state.values != null){
+      // Convert Epoch seconds value to date value
+      // Sample value: [1480572566, "5.75", "", ""]   >>>>  [timestamp, value, user_mail, action]
+      chart_data = this.state.values.map((val) => {return [epoch_to_date(val[0], true), parseFloat(val[1])]});
+      chart_data = [['Timestamp', this.state.alias], ].concat(chart_data);
+      table_data = this.state.values.map((val) => {return [epoch_to_date(val[0]).toString(), val[1]]});
+      table_data = table_data.filter(dd => dd[1] != null);
+    }
 
     return (
       <div>
@@ -205,60 +208,72 @@ class SensorView extends React.Component {
                   </div>
                 }
         />
-        <div style={{margin:20}}>
-          <Tabs onChange={this.handleChange.bind(this)} value={this.state.slideIndex}
-                tabItemContainerStyle={styles.tabbar} inkBarStyle={{color:blue600}}>
-            <Tab icon={<FontIcon className="material-icons">timeline</FontIcon>} label="Graph" value={0} >
-            </Tab>
-            <Tab icon={<FontIcon className="material-icons">list</FontIcon>} label="Table" value={1} >
-            </Tab>
-          </Tabs>
-          <SwipeableViews index={this.state.slideIndex} onChangeIndex={this.handleChange}>
-            <div style={styles.slide}>
-              <div className={"my-pretty-chart-container"}>
-                {
-                  chart_data.length > 1 ?
-                    <Chart
-                      chartType="LineChart"
-                      data={chart_data}
-                      options={{}}
-                      graph_id="ScatterChart"
-                      width="100%"
-                      height="400px"
-                      legend_toggle
-                    />
-                    :
-                    <h3>No Data</h3>
-                }
-                <br/>
+        {this.state.values == null ? <LoadingIndicator/> :
+          <div style={{margin: 20}}>
+            <Tabs onChange={this.handleChange.bind(this)} value={this.state.slideIndex}
+                  tabItemContainerStyle={styles.tabbar} inkBarStyle={{color: blue600}}>
+              <Tab icon={<FontIcon className="material-icons">timeline</FontIcon>} label="Graph" value={0}>
+              </Tab>
+              <Tab icon={<FontIcon className="material-icons">list</FontIcon>} label="Table" value={1}>
+              </Tab>
+            </Tabs>
+            <SwipeableViews index={this.state.slideIndex} onChangeIndex={this.handleChange}>
+              <div style={styles.slide}>
+                <div className={"my-pretty-chart-container"}>
+                  {
+                    chart_data.length > 1 ?
+                      <Chart
+                        chartType="LineChart"
+                        data={chart_data}
+                        options={{}}
+                        graph_id="ScatterChart"
+                        width="100%"
+                        height="400px"
+                        legend_toggle
+                      />
+                      :
+                      <h3>No Data</h3>
+                  }
+                  <br/>
+                </div>
               </div>
-            </div>
-            <div style={styles.slide}>
-              {table_data.length > 0 ?
-              <Table>
-                <TableHeader displaySelectAll={false} style={{background: grey500}}>
-                  <TableRow>
-                    <TableHeaderColumn
-                      style={{fontSize: 20, width: '70%', textAlign: 'center', paddingLeft: 0}}>Timestamp</TableHeaderColumn>
-                    <TableHeaderColumn
-                      style={{fontSize: 20, width: '30%', textAlign: 'center', paddingLeft: 0}}>Reading</TableHeaderColumn>
-                  </TableRow>
-                </TableHeader>
-                <TableBody showRowHover stripedRows displayRowCheckbox={false}>
-                  {table_data.map((row_data, i) =>
-                    <TableRow key={i}>
-                      <TableRowColumn style={{width: '70%', textAlign: 'center'}}>{row_data[0]}</TableRowColumn>
-                      <TableRowColumn style={{width: '30%', textAlign: 'center'}}>{row_data[1]}</TableRowColumn>
-                    </TableRow>
-                  )}
-                </TableBody>
-              </Table>
-              :
-                <h3>No Data</h3>
-              }
-            </div>
-          </SwipeableViews>
-        </div>
+              <div style={styles.slide}>
+                {table_data.length > 0 ?
+                  <Table>
+                    <TableHeader displaySelectAll={false} style={{background: grey500}}>
+                      <TableRow>
+                        <TableHeaderColumn
+                          style={{
+                            fontSize: 20,
+                            width: '70%',
+                            textAlign: 'center',
+                            paddingLeft: 0
+                          }}>Timestamp</TableHeaderColumn>
+                        <TableHeaderColumn
+                          style={{
+                            fontSize: 20,
+                            width: '30%',
+                            textAlign: 'center',
+                            paddingLeft: 0
+                          }}>Reading</TableHeaderColumn>
+                      </TableRow>
+                    </TableHeader>
+                    <TableBody showRowHover stripedRows displayRowCheckbox={false}>
+                      {table_data.map((row_data, i) =>
+                        <TableRow key={i}>
+                          <TableRowColumn style={{width: '70%', textAlign: 'center'}}>{row_data[0]}</TableRowColumn>
+                          <TableRowColumn style={{width: '30%', textAlign: 'center'}}>{row_data[1]}</TableRowColumn>
+                        </TableRow>
+                      )}
+                    </TableBody>
+                  </Table>
+                  :
+                  <h3>No Data</h3>
+                }
+              </div>
+            </SwipeableViews>
+          </div>
+        }
       </div>
     );
   }
