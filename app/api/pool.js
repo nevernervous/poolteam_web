@@ -20,12 +20,10 @@ function setPoolState(serialNumber, state) {
   return service.post(`/pool/${serialNumber}`, { state: state.toString() });
 }
 
-function getPoolData(sn, alias, limit, alias_type, start_time, end_time) {
+function getPoolData(sn, alias, start_time, end_time) {
   const { email } = store;
   const body = {
     alias,
-    limit,
-    alias_type,
     start_time,
     end_time,
   };

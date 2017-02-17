@@ -9,7 +9,7 @@ import PoolListEmptyState from '../components/PoolListEmptyState';
 import NavBar from '../components/NavBar';
 import AppBar from 'material-ui/AppBar';
 import store from '../store';
-import {cyan400, blue900, yellow600} from 'material-ui/styles/colors';
+import {yellow500, blue900, yellow600} from 'material-ui/styles/colors';
 import RaisedButton from 'material-ui/RaisedButton';
 import SettingsIcon from 'material-ui/svg-icons/action/settings';
 import ChevronRightIcon from 'material-ui/svg-icons/navigation/chevron-right';
@@ -142,7 +142,7 @@ export default class PoolListView extends React.Component {
     return (
       <div>
         <NavBar />
-        <AppBar style={{background: blue900}} title="My Pools" iconElementLeft={<span/>} />
+        <AppBar style={{background: blue900}} title={<span style={{color: yellow500}}>My Pools</span>} iconElementLeft={<span/>} />
         <div className="container" style={{marginTop: 10}}>
           {this.renderMainContent()}
         </div>

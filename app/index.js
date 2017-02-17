@@ -12,7 +12,6 @@ import PoolView from './views/PoolView';
 import PoolListView from './views/PoolListView';
 import SettingsView from './views/SettingsView';
 import SensorView from './views/SensorView';
-import OutputView from './views/OutputView';
 import ResetPwdView from './views/ResetPwdView';
 import UserMangeView from './views/UserMangeView';
 
@@ -35,7 +34,6 @@ render(
         <Route path="pools/:serialnumber" component={PoolView} />
         <Route path="pool/settings" component={SettingsView} />
         <Route path="pool/:serialnumber/sensor/:alias" component={SensorView} />
-        <Route path="pool/:serialnumber/output/:alias" component={OutputView} />
         <Route path="pools" component={PoolListView} />
         <Route path="user_manage" component={UserMangeView} />
       </Route>

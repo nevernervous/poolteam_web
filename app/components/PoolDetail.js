@@ -21,6 +21,7 @@ import Divider from 'material-ui/Divider';
 const styles = {
   title: {
     cursor: 'pointer',
+    color: yellow500,
   },
   appbar: {
     background: blue900,
@@ -47,7 +48,7 @@ const PoolDetail = ({
 }) => (
   <div>
     <AppBar style={styles.appbar}
-      title={<h2 style={{marginTop:15}}><span style={styles.title}>{name}</span></h2>}
+      title={<h2 style={{marginTop:15, color: yellow500}}><span style={styles.title}>{name}</span></h2>}
       iconElementLeft={<div style={{marginLeft: 20, marginTop: 5}}><img src="images/poolICON.png" width={40} height={40}/></div>}
     />
     {

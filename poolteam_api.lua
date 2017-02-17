@@ -544,66 +544,39 @@ if user ~= nil then
     return {"error", "alias must be specified..." }
   end
 
-  local alias_type = tostring(request.body.alias_type)
   local limit = request.body.limit
   if limit == nil then
-    limit = 50
+    limit = 300
   elseif limit > 1000 then
     limit = 1000
   end
 
-  if alias_type ~= "output" then
-    local metrics = {"value", "user", "action"}
-    local tags = {
-      sn = sn,
-      alias = alias
-    }
-    local server_response = Tsdb.query({
-      metrics = metrics,
-      tags = tags,
-      limit = limit,
---      relative_start = "-12h",
-      fill = "null",
-      epoch = "s"
-    })
-    response.message = server_response.values
-  else   -- Output
-    -- get last value
-    local metrics = {"value", "user", "action"}
-    local tags = {
-      sn = sn,
-      alias = alias
-    }
-    local server_response = Tsdb.query({
-      metrics = metrics,
-      tags = tags,
-      limit = 1,
-      epoch = "s"
-    })
-    local ret_last = server_response.values
-
-    tags = {
-      sn = sn,
-      alias = alias,
-      action = "manual_output"
-    }
-    server_response = Tsdb.query({
-      metrics = metrics,
-      tags = tags,
-      limit = limit,
-      epoch = "s"
-    })
-    local ret = server_response.values
-    for k, v in pairs(ret_last) do
-      ret[k] = v
-    end
-    response.message = ret
-
+  local metrics = {"value", "user", "action"}
+  local tags = {
+    sn = sn,
+    alias = alias
+  }
+  local start_time = request.body.start_time
+  if start_time == 'error' then
+    start_time = nil
   end
+  local end_time = request.body.end_time
+  if end_time == 'error' then
+    end_time = nil
+  end
+  local server_response = Tsdb.query({
+    metrics = metrics,
+    tags = tags,
+    limit = limit,
+    relative_start = start_time,
+    relative_end = end_time,
+    fill = "null",
+    epoch = "s"
+  })
+  response.message = server_response.values
 else
   http_error(403, response)
 end
-
 
 -- -------------------------------------------------------------------------------------------------------------------
 

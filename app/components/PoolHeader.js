@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, withRouter} from 'react-router';
-import {cyan400, white, blue900} from 'material-ui/styles/colors';
+import {yellow500, white, blue900} from 'material-ui/styles/colors';
 import RaisedButton from 'material-ui/RaisedButton';
 import SettingsIcon from 'material-ui/svg-icons/action/settings';
 import AppBar from 'material-ui/AppBar';
@@ -11,10 +11,12 @@ const styles = {
   title_name: {
     cursor: 'pointer',
     fontSize: 25,
+    color: yellow500,
   },
   title_alias: {
     cursor: 'pointer',
     fontSize: 22,
+    color: yellow500,
   },
   appbar: {
     background: blue900,
