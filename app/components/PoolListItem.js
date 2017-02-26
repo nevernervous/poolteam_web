@@ -25,6 +25,7 @@ const PoolListItem = ({
   serialNumber,
   onTouchThis,
   onEditThis,
+  pool,
   onDeleteThis,
 }) => (
   <ListItem
@@ -33,7 +34,17 @@ const PoolListItem = ({
       <img src="images/poolICON.png" width={40} height={40}/>
     }
     primaryText={name || '[unnamed]'}
-    secondaryText={serialNumber}
+    secondaryText={
+      <p>
+        <span>{serialNumber}             </span>
+        <span>Temp: </span>
+        <span style={{color: black}}>{pool.Temperature}</span><span>°C              </span>
+        <span>REDOX: </span>
+        <span style={{color: black}}>{pool.ORP}</span><span>mV              </span>
+        <span>Flow: </span>
+        <span style={{color: black}}>{pool.Flow}</span><span>m3/Hr              </span>
+      </p>
+    }
     rightIconButton={
       <IconMenu iconButtonElement={iconButtonElement}>
         {store.role === 'admin' ?
@@ -53,6 +64,7 @@ PoolListItem.propTypes = {
   onTouchThis: React.PropTypes.func.isRequired,
   onEditThis: React.PropTypes.func,
   onDeleteThis: React.PropTypes.func,
+  pool: React.PropTypes.object.isRequired,
 };
 
 export default PoolListItem;

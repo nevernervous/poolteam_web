@@ -172,6 +172,9 @@ class SensorView extends React.Component {
       table_data = table_data.filter(dd => dd[1] != null);
     }
 
+    // console.log(chart_data);
+    // console.log(table_data);
+
     return (
       <div>
         <NavBar showHomeButton />

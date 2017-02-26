@@ -44,6 +44,7 @@ class PoolListItemContainer extends React.Component {
   }
 
   onEventEdit(){
+    console.log(this.props.pool);
     this.setState({open_dialog: true, action_type: 'edit', txt_dialog: this.props.pool.name})
   }
 
@@ -126,6 +127,7 @@ class PoolListItemContainer extends React.Component {
         <PoolListItem
           name={name}
           serialNumber={serialnumber}
+          pool={this.props.pool}
           onTouchThis={this.onTouchPoolItem.bind(this)}
           onDeleteThis={this.onEventDelete.bind(this)}
           onEditThis={this.onEventEdit.bind(this)}

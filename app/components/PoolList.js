@@ -24,12 +24,12 @@ const listItemStyle = { paddingTop: 0, paddingBottom: 0 };
 const PoolList = ({ pools }) => (
   <Paper className="container">
     <List style={listItemStyle}>
-      {pools.map(wall => [
+      {pools.map(pool => [
         <PoolListItemContainer
-          key={wall.serialnumber}
-          pool={wall}
+          key={pool.serialnumber}
+          pool={pool}
         />,
-        <Divider key={`divider-${wall.serialnumber}`} />,
+        <Divider key={`divider-${pool.serialnumber}`} />,
       ])}
     </List>
   </Paper>
