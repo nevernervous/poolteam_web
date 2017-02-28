@@ -129,7 +129,7 @@ const PoolDetail = ({
       :
         <div style={{margin: 10, marginRight: 60}}>
           <List>
-            <Link to={`/pool/${sn}/sensor/PH`}>
+            <Link to={`/pool/${sn}/sensor/pH`}>
               <ListItem primaryText="PH"
                         rightIcon={
                           <div style={{color: (5.5 < ph && ph < 8.5) ? green800 : red400}}>

@@ -59,27 +59,27 @@ function kv_read_opt(sn, readDevice)
     -- and look up everything else.
     device = from_json(resp.value)
 
-    if device ~= nil then 
-      -- backward compatibility with old example versions
-      if not table.contains(device, 'rid') then
-        device.rid = lookup_rid(device.pid, sn) 
-      end
-    
-      if readDevice then
-        -- if any resource values haven't been written in
-        -- fetch the last value via the Device service
-        if device.temperature == nil or device.humidity == nil or device.state == nil or
-           device.temperature == 'undefined' or device.humidity == 'undefined' or device.state == 'undefined' then
-          temperature, humidity, state = device_read(device.pid, device.rid)
-          device.temperature = temperature
-          device.humidity = humidity
-          device.state = state
-          --default(device, 'temperature', temperature)
-          --default(device, 'humidity', humidity)
-          --default(device, 'state', state)
-        end
-      end
-    end
+--    if device ~= nil then
+--      -- backward compatibility with old example versions
+--      if not table.contains(device, 'rid') then
+--        device.rid = lookup_rid(device.pid, sn)
+--      end
+--
+----      if readDevice then
+----        -- if any resource values haven't been written in
+----        -- fetch the last value via the Device service
+----        if device.temperature == nil or device.humidity == nil or device.state == nil or
+----           device.temperature == 'undefined' or device.humidity == 'undefined' or device.state == 'undefined' then
+----          temperature, humidity, state = device_read(device.pid, device.rid)
+----          device.temperature = temperature
+----          device.humidity = humidity
+----          device.state = state
+----          --default(device, 'temperature', temperature)
+----          --default(device, 'humidity', humidity)
+----          --default(device, 'state', state)
+----        end
+----      end
+--    end
   end
 
   return device
