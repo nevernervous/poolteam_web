@@ -68,13 +68,7 @@ class SensorView extends React.Component {
     date.setHours(0, 0, 0, 0);
     let pool = null;
     const alias = props.params.alias;
-    if (store.pools) {
-      pool = store.pools.filter(pool => pool.serialnumber == props.params.serialnumber)[0];
-      if (pool && (pool.state === null || !pool.hasOwnProperty('state') || pool.state === "undefined")) {
-        pool = null;
-        errorText = getMuranoErrorText();
-      }
-    }
+    const serial_number = props.params.serialnumber;
     this.state = {
       errorText,
       values,
@@ -83,6 +77,7 @@ class SensorView extends React.Component {
       alias,
       slideIndex: 0,
       pool,
+      serial_number,
     };
   }
 
@@ -110,7 +105,18 @@ class SensorView extends React.Component {
     let end_time = tmp.toISOString();
     // console.log('Start time', start_time);
     // console.log('End time', end_time);
-    api.getPoolData(this.state.pool.serialnumber, this.state.alias, start_time, end_time)
+    let pool = null;
+    if (store.pools) {
+      pool = store.pools.filter(pool => pool.serialnumber == this.state.serial_number)[0];
+      // console.log('pool', pool);
+      this.setState({pool: pool});
+      if (pool == null)
+        this.setState({errorText: getMuranoErrorText()});
+    }
+
+    // console.log(this.state);
+
+    api.getPoolData(pool.serialnumber, this.state.alias, start_time, end_time)
       .then(response => this.handlePoolApiResponse(response))
       .catch(err => {
         clearTimeout(this.state.timeoutId);
