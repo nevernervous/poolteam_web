@@ -123,6 +123,9 @@ export default class SettingsView extends React.Component {
               emails.push(base32.decode(response.payload[i]));
             this.setState({ alert_emails: emails, b_loading: false});
           }
+          else{
+            this.setState({ alert_emails: null});
+          }
           this.setState({ errorText: null, b_loading: false});
         }
       })
