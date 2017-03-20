@@ -47,11 +47,6 @@ Tsdb.write({
   tags = tags
 })
 
--- If received alias is `alert`, just send alerts to users.
-if data.alias == "alert" then
-  send_alerts(data.device_sn, tostring(data.value[2]))
-end
-
 -- Check Key Store and update with the latest value
 local value = kv_read(data.device_sn)
 if value == nil then
@@ -64,6 +59,11 @@ if value == nil then
     Flow = nil,
     alert = nil,
   }
+end
+
+-- If received alias is `alert`, just send alerts to users.
+if data.alias == "alert" and value["alert"] == nil then
+  send_alerts(data.device_sn, tostring(data.value[2]))
 end
 
 value[data.alias] = data.value[2]
